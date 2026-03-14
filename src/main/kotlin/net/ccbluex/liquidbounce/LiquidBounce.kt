@@ -298,6 +298,9 @@ object LiquidBounce : EventListener {
         CommandManager.registerInbuilt()
         ModuleManager.registerInbuilt()
 
+        // Initialize window title animator
+        net.ccbluex.liquidbounce.utils.client.WindowTitleAnimator
+
         // Load user scripts
         runCatching(ScriptManager::loadAll).onFailure { error ->
             logger.error("ScriptManager was unable to load scripts.", error)

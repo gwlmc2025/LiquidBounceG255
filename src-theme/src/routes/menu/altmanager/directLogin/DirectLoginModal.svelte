@@ -9,12 +9,12 @@
 
     const tabs = [
         {
-            title: "Cracked",
+            title: "离线",
             icon: "icon-cracked.png",
             component: CrackedAccountDirectLoginTab
         },
         {
-            title: "Session",
+            title: "会话",
             icon: "icon-session.svg",
             component: SessionAccountDirectLoginTab
         }
@@ -28,6 +28,6 @@
     }
 </script>
 
-<Modal title="Direct Login" bind:visible={visible}>
+<Modal title="直连登录" bind:visible={visible}>
     <Tabs {tabs} {activeTab} on:changeTab={handleChangeTab}/>
 </Modal>

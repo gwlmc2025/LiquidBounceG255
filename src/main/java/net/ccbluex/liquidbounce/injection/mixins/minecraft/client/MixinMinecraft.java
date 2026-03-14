@@ -172,7 +172,8 @@ public abstract class MixinMinecraft {
 
     /**
      * Modify window title to our client title.
-     * Example: LiquidBounce v1.0.0 | 1.16.3
+     * The title is now handled by WindowTitleAnimator for animation effects.
+     * We only set a base title here that will be updated by the animator.
      *
      * @param callback our window title
      *                 <p>
@@ -190,60 +191,11 @@ public abstract class MixinMinecraft {
 
         LiquidBounce.INSTANCE.getLogger().debug("Modifying window title");
 
-        StringBuilder titleBuilder = new StringBuilder(LiquidBounce.CLIENT_NAME);
-        titleBuilder.append(" v");
-        titleBuilder.append(LiquidBounce.INSTANCE.getClientVersion());
-        titleBuilder.append(" ");
-
-        if (LiquidBounce.IN_DEVELOPMENT) {
-            titleBuilder.append("(dev) ");
-        }
-
-        titleBuilder.append(LiquidBounce.INSTANCE.getClientCommit());
-
-        titleBuilder.append(" | ");
-
-        // ViaFabricPlus compatibility
-        if (getUsesViaFabricPlus()) {
-            var protocolVersion = VfpCompatibility.INSTANCE.unsafeGetProtocolVersion();
-
-            if (protocolVersion != null) {
-                titleBuilder.append(protocolVersion.getName());
-            } else {
-                titleBuilder.append(SharedConstants.getCurrentVersion().name());
-            }
-        } else {
-            titleBuilder.append(SharedConstants.getCurrentVersion().name());
-        }
-
-        // For debugging purposes, will be removed until we have a stable release
-        var backend = BrowserBackendManager.INSTANCE.getBackend();
-        if (backend != null && backend.isInitialized() && backend.getAccelerationFlags().isSupported()) {
-            var accelerated = GlobalBrowserSettings.INSTANCE.getAccelerated();
-
-            if (accelerated != null && accelerated.get()) {
-                titleBuilder.append(" | Accelerated Paint is ON");
-                // Hotkey only works when not in-game
-                if (this.level == null && this.player == null) {
-                    titleBuilder.append(" [Hotkey: F12]");
-                }
-            }
-        }
-
-        ClientPacketListener clientPlayNetworkHandler = this.getConnection();
-        if (clientPlayNetworkHandler != null && clientPlayNetworkHandler.getConnection().isConnected()) {
-            titleBuilder.append(" - ");
-            ServerData serverInfo = this.getCurrentServer();
-            if (this.singleplayerServer != null && !this.singleplayerServer.isPublished()) {
-                titleBuilder.append(I18n.get("title.singleplayer"));
-            } else if (serverInfo != null && serverInfo.isRealm()) {
-                titleBuilder.append(I18n.get("title.multiplayer.realms"));
-            } else if (this.singleplayerServer == null && (serverInfo == null || !serverInfo.isLan())) {
-                titleBuilder.append(I18n.get("title.multiplayer.other"));
-            } else {
-                titleBuilder.append(I18n.get("title.multiplayer.lan"));
-            }
-        }
+        // The WindowTitleAnimator will handle the actual title updates
+        // We just set a simple base title here
+        String version = SharedConstants.getCurrentVersion().name();
+        StringBuilder titleBuilder = new StringBuilder("LiquidBounceG255 By-G255 | ");
+        titleBuilder.append(version);
 
         callback.setReturnValue(titleBuilder.toString());
     }

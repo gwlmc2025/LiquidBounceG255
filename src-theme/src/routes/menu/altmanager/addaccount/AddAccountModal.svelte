@@ -21,12 +21,12 @@
             component: TheAlteningAccountTab
         },
         {
-            title: "Cracked",
+            title: "离线",
             icon: "icon-cracked.png",
             component: CrackedAccountTab
         },
         {
-            title: "Session",
+            title: "会话",
             icon: "icon-session.svg",
             component: SessionAccountTab
         }
@@ -40,6 +40,6 @@
     }
 </script>
 
-<Modal title="Add Account" bind:visible={visible}>
+<Modal title="添加账号" bind:visible={visible}>
     <Tabs {tabs} {activeTab} on:changeTab={handleChangeTab}/>
 </Modal>

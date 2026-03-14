@@ -23,6 +23,6 @@
 
 <Tab>
     <IconTextInput icon="user" title="Token" bind:value={token}/>
-    <ButtonSetting {disabled} title="Add Account" on:click={addAccount} listenForEnter={true} inset={true} {loading}/>
-    <ButtonSetting title="Get Account Token" on:click={() => browse("THE_ALTENING")} secondary={true}/>
+    <ButtonSetting {disabled} title="添加账号" on:click={addAccount} listenForEnter={true} inset={true} {loading}/>
+    <ButtonSetting title="获取账号Token" on:click={() => browse("THE_ALTENING")} secondary={true}/>
 </Tab>
