@@ -15,6 +15,7 @@
     import {scaleFactor} from "./clickgui_store";
 
     export let name: string;
+    export let translatedName: string = name;
     export let enabled: boolean;
     export let description: string;
     export let aliases: string[];
@@ -120,7 +121,7 @@
             class:enabled
             class:highlight={name === $highlightModuleName}
     >
-        {$spaceSeperatedNames ? convertToSpacedString(name) : name}
+        {translatedName}
     </div>
 
     {#if expanded && configurable}

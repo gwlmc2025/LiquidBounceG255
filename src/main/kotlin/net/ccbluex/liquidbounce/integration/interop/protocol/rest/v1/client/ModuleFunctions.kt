@@ -31,7 +31,9 @@ import net.ccbluex.liquidbounce.features.module.ClientModule
 import net.ccbluex.liquidbounce.features.module.ModuleCategories
 import net.ccbluex.liquidbounce.features.module.ModuleManager
 import net.ccbluex.liquidbounce.features.module.ModuleManager.modulesConfig
+import net.ccbluex.liquidbounce.lang.translation
 import net.ccbluex.liquidbounce.utils.client.logger
+import net.ccbluex.liquidbounce.utils.client.toLowerCamelCase
 import net.ccbluex.liquidbounce.utils.kotlin.Minecraft
 import net.ccbluex.netty.http.model.RequestObject
 import net.ccbluex.netty.http.util.httpBadRequest
@@ -43,6 +45,8 @@ import org.apache.commons.io.input.CharSequenceReader
 private fun ClientModule.toJsonObject() = JsonObject().apply {
     addProperty("name", name)
     addProperty("category", category.tag)
+    addProperty("translatedName", translation("liquidbounce.module.${name.toLowerCamelCase()}.name").string)
+    addProperty("translatedCategory", translation("liquidbounce.category.${category.tag}").string)
     add("keyBind", interopGson.toJsonTree(bind))
     addProperty("enabled", enabled)
     addProperty("description", description.get())

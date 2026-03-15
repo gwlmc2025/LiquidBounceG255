@@ -35,6 +35,7 @@
 
         filteredModules = modules.filter((m) => m.name.toLowerCase().includes(pureQuery)
             || m.aliases.some(a => a.toLowerCase().includes(pureQuery))
+            || m.translatedName.toLowerCase().includes(pureQuery)
         );
     }
 
@@ -142,7 +143,7 @@
     <input
             type="text"
             class="search-input"
-            placeholder="Search"
+            placeholder="搜索"
             spellcheck="false"
             bind:value={query}
             bind:this={searchInputElement}
@@ -155,7 +156,7 @@
     {#if query}
         <div class="results">
             {#if filteredModules.length > 0}
-                {#each filteredModules as {name, enabled, aliases}, index (name)}
+                {#each filteredModules as {name, translatedName, enabled, aliases}, index (name)}
                     <!-- svelte-ignore a11y-click-events-have-key-events -->
                     <!-- svelte-ignore a11y-no-static-element-interactions -->
                     <div
@@ -167,7 +168,7 @@
                             bind:this={resultElements[index]}
                     >
                         <div class="module-name">
-                            {$spaceSeperatedNames ? convertToSpacedString(name) : name}
+                            {translatedName}
                         </div>
                         <div class="aliases">
                             {#if aliases.length > 0}
@@ -177,9 +178,8 @@
                     </div>
                 {/each}
             {:else}
-                <div class="placeholder">No modules found</div>
-            {/if}
-        </div>
+                    <div class="placeholder">未找到模块</div>
+                {/if}        </div>
     {/if}
 </div>
 
@@ -245,7 +245,7 @@
         color: $clickgui-text-color;
 
         &::after {
-          content: "Right-click to locate";
+          content: "右键定位";
           color: rgba($clickgui-text-color, 0.4);
           font-size: 12px;
         }

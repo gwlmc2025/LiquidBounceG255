@@ -17,6 +17,7 @@
     import {setItem} from "../../integration/persistent_storage";
 
     export let category: string;
+    export let translatedCategory: string = category;
     export let modules: TModule[];
     export let panelIndex: number;
 
@@ -207,7 +208,7 @@
                 src="img/clickgui/icon-{category.toLowerCase()}.svg"
                 alt="icon"
         />
-        <span class="category">{category}</span>
+        <span class="category">{translatedCategory}</span>
 
         <!-- svelte-ignore a11y_consider_explicit_label -->
         <button class="expand-toggle" on:click={toggleExpanded} bind:this={expandButtonElement}>
@@ -221,8 +222,8 @@
             on:scroll={handleModulesScroll}
             bind:this={modulesElement}
     >
-        {#each modules as {name, enabled, description, aliases} (name)}
-            <Module {name} {enabled} {description} {aliases}/>
+        {#each modules as {name, translatedName, enabled, description, aliases} (name)}
+            <Module {name} {translatedName} {enabled} {description} {aliases}/>
         {/each}
     </div>
 </div>

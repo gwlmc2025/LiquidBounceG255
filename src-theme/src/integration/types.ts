@@ -17,6 +17,8 @@ export interface Metadata {
 export interface Module {
     name: string;
     category: string;
+    translatedName: string;
+    translatedCategory: string;
     keyBind: InputBind;
     enabled: boolean;
     description: string;

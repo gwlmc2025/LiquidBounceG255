@@ -39,6 +39,23 @@
 
     onMount(async () => {
         await insertPersistentData();
+        
+        // 加载翻译数据
+        if (!isStatic) {
+            try {
+                // 尝试从静态资源加载翻译文件
+                const response = await fetch(`/liquidbounce/lang/zh_cn.json`);
+                if (response.ok) {
+                    const translations = await response.json();
+                    (window as any).translations = translations;
+                    console.log(`[Translation] Loaded ${Object.keys(translations).length} translations`);
+                } else {
+                    console.warn('[Translation] Failed to load translations file');
+                }
+            } catch (e) {
+                console.error('[Translation] Failed to load translations', e);
+            }
+        }
 
         if (isStatic) {
             return;

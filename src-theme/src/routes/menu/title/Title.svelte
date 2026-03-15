@@ -66,7 +66,7 @@
             {:else if clientButtonsShown}
                 <MainButton title="代理管理器" icon="proxymanager" on:click={() => openScreen("proxymanager")}
                             index={0}/>
-                <MainButton title="Click GUI" icon="clickgui" on:click={() => openScreen("clickgui")} index={1}/>
+                <MainButton title="点击GUI" icon="clickgui" on:click={() => openScreen("clickgui")} index={1}/>
                 <!-- <MainButton title="Scripts" icon="scripts" index={2}/> -->
                 <MainButton title="返回" icon="back-large" on:click={toggleButtons} index={2}/>
             {/if}

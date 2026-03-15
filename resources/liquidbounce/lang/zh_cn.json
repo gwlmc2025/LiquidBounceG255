@@ -1271,11 +1271,5 @@
   "liquidbounce.module.killAura.value.RangeIndicator.description": "范围指示器显示设置",
   "liquidbounce.module.killAura.value.NotifyWhenFail.description": "攻击失败时的提示设置",
   "liquidbounce.module.killAura.value.AutoBlocking.name": "自动格挡",
-  "liquidbounce.module.killAura.value.AutoBlocking.description": "自动格挡设置",
-  "liquidbounce.module.killAura.value.Target.name": "目标",
-  "liquidbounce.module.killAura.value.Target.description": "目标选择和追踪设置",
-  "liquidbounce.module.killAura.value.AimPoint.name": "瞄准点",
-  "liquidbounce.module.killAura.value.AimPoint.description": "瞄准点设置",
-  "liquidbounce.module.killAura.value.Hidden.name": "隐藏",
-  "liquidbounce.module.killAura.value.Hidden.description": "隐藏模块"
+  "liquidbounce.module.killAura.value.AutoBlocking.description": "自动格挡设置"
 }

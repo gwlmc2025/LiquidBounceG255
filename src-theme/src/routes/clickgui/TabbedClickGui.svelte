@@ -10,8 +10,8 @@
     import type {ClickGuiValueChangeEvent, ScaleFactorChangeEvent} from "../../integration/events";
 
     const tabs = [
-        {title: "ClickGUI", content: ClickGui},
-        {title: "Settings", content: GlobalSettings}
+        {title: "点击GUI", content: ClickGui},
+        {title: "设置", content: GlobalSettings}
     ];
 
     let activeTab = $state(0);

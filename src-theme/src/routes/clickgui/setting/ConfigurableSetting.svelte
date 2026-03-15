@@ -30,12 +30,26 @@
         }
         expanded = !expanded;
     }
+
+    // 查找翻译
+    function findTranslation(name: string): string {
+        // 从路径中提取模块名称
+        const pathParts = path.split('.');
+        const moduleName = pathParts[1]; // liquidbounce.module.xxx.value
+        
+        // 构建翻译键
+        const translationKey = `liquidbounce.module.${moduleName}.value.${name}.name`;
+        
+        // 查找翻译
+        const translations = (window as any).translations || {};
+        return translations[translationKey] || ($spaceSeperatedNames ? convertToSpacedString(name) : name);
+    }
 </script>
 
 <div class="setting">
     <!-- svelte-ignore a11y-no-static-element-interactions -->
     <div class="head" class:expanded on:contextmenu|preventDefault={toggleExpanded}>
-        <div class="title">{$spaceSeperatedNames ? convertToSpacedString(setting.name) : setting.name}</div>
+        <div class="title">{findTranslation(setting.name)}</div>
         {#if !hideExpandControl}
             <ExpandArrow bind:expanded />
         {/if}

@@ -15,6 +15,11 @@
         modules = await getModules();
         categories = groupByCategory(modules);
     });
+
+    function getTranslatedCategory(category: string): string {
+        const module = modules.find(m => m.category === category);
+        return module?.translatedCategory || category;
+    }
 </script>
 
 <div class="clickgui" transition:fade|global={{ duration: 200 }}>
@@ -22,6 +27,6 @@
     <Search modules={structuredClone($state.snapshot(modules))}/>
 
     {#each Object.entries(categories) as [category, modules], panelIndex (category)}
-        <Panel {category} {modules} {panelIndex}/>
+        <Panel category={category} translatedCategory={getTranslatedCategory(category)} {modules} {panelIndex}/>
     {/each}
 </div>
