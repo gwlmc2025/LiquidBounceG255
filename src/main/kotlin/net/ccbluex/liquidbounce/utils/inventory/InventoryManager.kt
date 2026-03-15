@@ -104,8 +104,8 @@ object InventoryManager : EventListener {
             cycles++
             // Safety check to prevent infinite loops
             if (cycles > 100) {
-                chat("InventoryManager has been running for too long ($cycles cycles) on tick, stopping now. " +
-                    "Please report this issue.")
+                chat("InventoryManager 运行时间过长（$cycles 个周期），正在停止。" +
+                    "请报告此问题。")
                 break
             }
 

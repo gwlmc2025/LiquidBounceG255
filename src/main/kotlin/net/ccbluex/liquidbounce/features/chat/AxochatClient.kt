@@ -309,8 +309,8 @@ class AxochatClient {
                     }
 
                     // TODO: Replace with translation
-                    "Ban" -> chat("§7[§a§lChat§7] §9Successfully banned user!")
-                    "Unban" -> chat("§7[§a§lChat§7] §9Successfully unbanned user!")
+                    "Ban" -> chat("§7[§a§lChat§7] §9成功封禁用户！")
+                    "Unban" -> chat("§7[§a§lChat§7] §9成功解封用户！")
                 }
             }
 
@@ -320,21 +320,21 @@ class AxochatClient {
 
     private fun translateErrorMessage(packet: S2CErrorPacket): String {
         val message = when (packet.message) {
-            "NotSupported" -> "This method is not supported!"
-            "LoginFailed" -> "Login Failed!"
-            "NotLoggedIn" -> "You must be logged in to use the chat!"
-            "AlreadyLoggedIn" -> "You are already logged in!"
-            "MojangRequestMissing" -> "Mojang request missing!"
-            "NotPermitted" -> "You are missing the required permissions!"
-            "NotBanned" -> "You are not banned!"
-            "Banned" -> "You are banned!"
-            "RateLimited" -> "You have been rate limited. Please try again later."
-            "PrivateMessageNotAccepted" -> "Private message not accepted!"
-            "EmptyMessage" -> "You are trying to send an empty message!"
-            "MessageTooLong" -> "Message is too long!"
-            "InvalidCharacter" -> "Message contains a non-ASCII character!"
-            "InvalidId" -> "The given ID is invalid!"
-            "Internal" -> "An internal server error occurred!"
+            "NotSupported" -> "不支持此方法！"
+            "LoginFailed" -> "登录失败！"
+            "NotLoggedIn" -> "您必须登录才能使用聊天功能！"
+            "AlreadyLoggedIn" -> "您已经登录了！"
+            "MojangRequestMissing" -> "缺少 Mojang 请求！"
+            "NotPermitted" -> "您缺少所需权限！"
+            "NotBanned" -> "您没有被封禁！"
+            "Banned" -> "您已被封禁！"
+            "RateLimited" -> "您已被限流。请稍后再试。"
+            "PrivateMessageNotAccepted" -> "私信不被接受！"
+            "EmptyMessage" -> "您正在尝试发送空消息！"
+            "MessageTooLong" -> "消息太长！"
+            "InvalidCharacter" -> "消息包含非 ASCII 字符！"
+            "InvalidId" -> "给定的 ID 无效！"
+            "Internal" -> "发生了内部服务器错误！"
             else -> packet.message
         }
 

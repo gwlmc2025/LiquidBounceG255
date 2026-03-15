@@ -127,9 +127,9 @@ object AutoConfig {
         modules: Collection<ValueGroup> = emptyList()
     ) {
         chat(metadata = MessageMetadata(prefix = false))
-        chat("Auto Config".asPlainText(Style.EMPTY + ChatFormatting.LIGHT_PURPLE + ChatFormatting.BOLD))
+        chat("自动配置".asPlainText(Style.EMPTY + ChatFormatting.LIGHT_PURPLE + ChatFormatting.BOLD))
 
-        val name = jsonObject.string("name") ?: throw IllegalArgumentException("Auto Config has no name")
+        val name = jsonObject.string("name") ?: throw IllegalArgumentException("自动配置没有名称")
         when (name) {
             "autoconfig" -> {
                 // Deserialize Module Configurable
@@ -143,7 +143,7 @@ object AutoConfig {
                 }
             }
             "modules" -> deserializeModuleValueGroup(jsonObject, modules)
-            else -> error("Unknown auto config type: $name")
+            else -> error("未知的自动配置类型：$name")
         }
 
         // Auto Config
@@ -159,7 +159,7 @@ object AutoConfig {
         val serverAddress = metadata.serverAddress
         if (serverAddress != null) {
             chat(
-                regular("for server "),
+                regular("针对服务器 "),
                 variable(serverAddress)
             )
         }
@@ -179,7 +179,7 @@ object AutoConfig {
 
         if (date != null || time != null) {
             chat(
-                regular("on "),
+                regular("在 "),
                 variable(if (!date.isNullOrBlank()) "$date " else ""),
                 variable(if (!time.isNullOrBlank()) time else "")
             )
@@ -187,7 +187,7 @@ object AutoConfig {
 
         if (author != null) {
             chat(
-                regular("by "),
+                regular("由 "),
                 variable(author)
             )
         }
@@ -241,12 +241,12 @@ object AutoConfig {
 
             if (usesViaFabricPlus) {
                 if (inGame) {
-                    chat(markAsError("Please reconnect to the server to apply the correct protocol."))
+                    chat(markAsError("请重新连接到服务器以应用正确的协议。"))
                 } else {
                     selectProtocolVersion(pVersion)
                 }
             } else {
-                chat(markAsError("Please install ViaFabricPlus to apply the correct protocol."))
+                chat(markAsError("请安装 ViaFabricPlus 以应用正确的协议。"))
             }
         }
     }

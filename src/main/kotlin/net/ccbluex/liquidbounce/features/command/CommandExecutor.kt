@@ -155,7 +155,7 @@ object CommandExecutor : EventListener {
                 chat(e.text.withStyle(ChatFormatting.RED), metadata = data)
 
                 if (e.usageInfo.isNotEmpty()) {
-                    chat(highlight("Usage: ").bold(true), metadata = data)
+                    chat(highlight("用法：").bold(true), metadata = data)
 
                     // Zip the usage info together, e.g.
                     // ⬥ .friend add <name> [<alias>]

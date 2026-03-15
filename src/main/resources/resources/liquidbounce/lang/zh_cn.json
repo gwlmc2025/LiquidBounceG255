@@ -260,8 +260,10 @@
   "liquidbounce.command.value.description": "设置特定模块的属性。",
   "liquidbounce.command.value.subcommand.set.result.success": "已设置属性 %s (属于模块 %s)。",
   "liquidbounce.command.value.subcommand.set.result.valueError": "无法设置属性 %s，错误原因: '%s'！",
+  "liquidbounce.command.value.subcommand.set.result.valueNotFound": "无法找到值 %s！",
   "liquidbounce.command.value.subcommand.reset.result.valueNotFound": "属性 %s 不存在！",
   "liquidbounce.command.value.subcommand.reset.result.resetSuccess": "成功重置属性 %s (属于模块 %s)。",
+  "liquidbounce.command.value.subcommand.reset-all.result.valueGroupNotFound": "无法找到值组 %s！",
   "liquidbounce.command.value.subcommand.reset-all.result.resetAllSuccess": "成功重置模块 %s 的所有属性值。",
   "liquidbounce.command.vclip.result.invalidDistance": "距离无效。请输入有效的数字。",
   "liquidbounce.command.vclip.result.noPositionFound": "未找到可clip的有效位置。",
@@ -304,6 +306,7 @@
   "liquidbounce.command.autodisable.subcommand.remove.result.moduleNotPresent": "模块\"%s\"未被添加。",
   "liquidbounce.command.autodisable.subcommand.remove.result.moduleRemoved": "已移除模块\"%s\"。",
 
+  "liquidbounce.command.models.subcommand.create.description": "创建一个新的深度学习模型。",
   "liquidbounce.command.models.subcommand.create.result.modelExists": "❌ 模型%s已存在。",
   "liquidbounce.command.models.subcommand.create.result.trainingStart": "⚡ 开始训练模型%s…",
   "liquidbounce.command.models.subcommand.create.result.samplesLoaded": "✔ 已加载%s个样本，用时%s。",
@@ -313,6 +316,7 @@
   "liquidbounce.command.models.subcommand.create.result.trainingFailed": "❌ 训练失败，错误信息：%s",
   "liquidbounce.command.models.subcommand.create.result.invalidName": "❌ 模型名称无效。模型名称必须为字母数字且不包含空格。",
 
+  "liquidbounce.command.models.subcommand.improve.description": "改进深度学习模型。",
   "liquidbounce.command.models.subcommand.improve.result.modelNotFound": "❌ 未找到模型%s。",
   "liquidbounce.command.models.subcommand.improve.result.trainingStart": "⚡ 开始训练模型%s…",
   "liquidbounce.command.models.subcommand.improve.result.noSamples": "❌ 未找到该型号的模型 %s.",
@@ -321,10 +325,14 @@
   "liquidbounce.command.models.subcommand.improve.result.trainingEnd": "✔ 模型%s训练完成并成功保存，用时%s。",
   "liquidbounce.command.models.subcommand.improve.result.trainingFailed": "❌ 训练失败，错误信息：%s",
 
+  "liquidbounce.command.models.subcommand.reload.description": "从磁盘重新加载所有深度学习模型。",
   "liquidbounce.command.models.subcommand.reload.result.modelsReloaded": "✔ 模型已重新加载。",
 
+  "liquidbounce.command.models.subcommand.delete.description": "删除深度学习模型。",
   "liquidbounce.command.models.subcommand.delete.result.modelNotFound": "❌ 未找到模型%s。",
   "liquidbounce.command.models.subcommand.delete.result.modelDeleted": "✔ 模型%s已删除。",
+
+  "liquidbounce.command.models.subcommand.browse.description": "打开深度学习模型目录。",
 
   "liquidbounce.command.marketplace.description": "管理市场物品和与 LiquidBounce 市场的交互。",
 
@@ -458,6 +466,7 @@
   "liquidbounce.module.antiStaff.messages.staffsFailed": "无法加载 %s 的员工名单，代码为 %s。",
   "liquidbounce.module.antiStaff.messages.staffsLoaded": "%s 管理名单已加载，适用于 %s。",
   "liquidbounce.module.antiStaff.messages.vanishClear": "没有发现消失的玩家。",
+  "liquidbounce.module.hitFX.description": "击中目标时触发特殊效果。",
   "liquidbounce.module.particles.description": "攻击实体时显示粒子效果。",
   "liquidbounce.module.autoAccount.description": "自动在离线服务器上验证身份。",
   "liquidbounce.module.autoArmor.description": "自动装备背包中最好的盔甲。",

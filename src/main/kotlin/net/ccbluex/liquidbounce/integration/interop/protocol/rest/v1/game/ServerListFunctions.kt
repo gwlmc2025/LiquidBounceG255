@@ -76,7 +76,7 @@ fun getServers(requestObject: RequestObject) = runCatching {
     }
 
     httpOk(servers)
-}.getOrElse { httpInternalServerError("Failed to get servers due to ${it.message}") }
+}.getOrElse { httpInternalServerError("获取服务器列表失败：${it.message}") }
 
 // POST /api/v1/client/servers/connect
 @Suppress("UNUSED_PARAMETER")
@@ -85,7 +85,7 @@ fun postConnect(requestObject: RequestObject): FullHttpResponse {
 
     val serverConnectRequest = requestObject.asJson<ServerConnectRequest>()
     val serverInfo = serverList.getByAddress(serverConnectRequest.address)
-        ?: ServerData("Unknown Server", serverConnectRequest.address, ServerData.Type.OTHER)
+        ?: ServerData("未知服务器", serverConnectRequest.address, ServerData.Type.OTHER)
 
     val serverAddress = ServerAddress.parseString(serverInfo.ip)
 
@@ -103,7 +103,7 @@ fun putAddServer(requestObject: RequestObject): FullHttpResponse {
     val serverAddRequest = requestObject.asJson<ServerAddRequest>()
 
     if (!ServerAddress.isValidAddress(serverAddRequest.address)) {
-        return httpForbidden("Invalid address")
+        return httpForbidden("无效地址")
     }
 
     val serverInfo = ServerData(serverAddRequest.name, serverAddRequest.address, ServerData.Type.OTHER)
@@ -235,11 +235,11 @@ object ActiveServerList : EventListener {
             } catch (unknownHostException: UnknownHostException) {
                 serverEntry.setState(ServerData.State.UNREACHABLE)
                 serverEntry.motd = cannotResolveText
-                logger.error("Failed to ping server ${serverEntry.name} due to ${unknownHostException.message}")
+                logger.error("无法ping通服务器 ${serverEntry.name}，原因：${unknownHostException.message}")
             } catch (exception: Exception) {
                 serverEntry.setState(ServerData.State.UNREACHABLE)
                 serverEntry.motd = cannotConnectText
-                logger.error("Failed to ping server ${serverEntry.name}", exception)
+                logger.error("无法ping通服务器 ${serverEntry.name}", exception)
             }
         }, Util.nonCriticalIoPool())
     }
